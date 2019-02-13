@@ -1,5 +1,6 @@
+const cool = require('cool-ascii-faces')
 const express = require('express');
-const app = express();
+const app = express().get('/cool', (req, res) => res.send(cool()));
 const bodyParser = require('body-parser');
 require('dotenv').load()
 const port = process.env.PORT || 3000;
