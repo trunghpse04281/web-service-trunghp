@@ -3,6 +3,7 @@ module.exports = function (app) {
 
     // todoList Routes
     app.route('/account/getAll').get(accountController.get);
+    app.route('/account/login/:user_name/:password').get(accountController.login);
     // .post(productsCtrl.store);
 
     // app.route('/account/getDetail/:accountId').get(accountController.detail);
