@@ -12,7 +12,7 @@ module.exports = {
     login: (req, res) => {
         let sql = 'SELECT * FROM TBLAccount WHERE user_name = ? AND password = ? ';
         console.log(sql);
-        db.query(sql, [req.params.user_name, req.params.password], (err, response) => {
+        db.query(sql, [req.body.user_name, req.body.password], (err, response) => {
             if (err) throw err
             console.log(req.params.user_name);
             res.json(response[0]);
