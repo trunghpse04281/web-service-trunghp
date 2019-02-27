@@ -2,7 +2,7 @@ const db = require('./../db')
 
 module.exports = {
     get: (req, res) => {
-        let sql = 'SELECT * FROM TBLAccount';
+        let sql = 'SELECT * FROM tblaccount';
         console.log(sql);
         db.query(sql, (err, response) => {
             if (err) throw err
@@ -10,7 +10,7 @@ module.exports = {
         })
     },
     login: (req, res) => {
-        let sql = 'SELECT * FROM TBLAccount WHERE user_name = ? AND password = ? ';
+        let sql = 'SELECT * FROM tblaccount WHERE user_name = ? AND password = ? ';
         console.log(sql);
         db.query(sql, [req.body.user_name, req.body.password], (err, response) => {
             if (err) throw err
