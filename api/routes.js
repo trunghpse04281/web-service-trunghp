@@ -10,5 +10,6 @@ module.exports = function (app) {
 
     app.route('/category/getAll').get(categoryController.getAllCategory);
 
-    app.route('/product/getAll').get(productController.getAllProduct);
+    app.route('/product/getAll/:begin/:end').get(productController.getAllProduct);
+    app.route('/product/getByCat').post(productController.getProductByCategory);
 };
