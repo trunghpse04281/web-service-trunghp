@@ -27,4 +27,19 @@ module.exports = {
             res.json(response);
         })
     },
+    insertProduct: (req, res) => {
+        let sql = "INSERT INTO tbl_product(name, price, description, image_url, category, owner, status) " +
+            "VALUES(?,?,?,?,?,?,?); ";
+        console.log(sql);
+        db.query(sql, [req.body.name,
+        req.body.price,
+        req.body.description,
+        req.body.image_url,
+        req.body.category,
+        req.body.owner,
+        req.body.status], (err, response) => {
+            if (err) throw err;
+            res.json(response.insertId);
+        })
+    }
 }

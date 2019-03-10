@@ -12,4 +12,5 @@ module.exports = function (app) {
 
     app.route('/product/getAll/:begin/:end').get(productController.getAllProduct);
     app.route('/product/getByCat').post(productController.getProductByCategory);
+    app.route('/product/insert').post(productController.insertProduct);
 };
