@@ -15,7 +15,7 @@ module.exports = {
         db.query(sql, [req.body.user_name, req.body.password], (err, response) => {
             if (err) throw err
             console.log(req.body.user_name);
-            res.json(response);
+            res.json(response[0]);
         })
     },
 };
