@@ -15,9 +15,9 @@ module.exports = {
     getProductByCategory: (req, res) => {
         let sql;
         if (req.body.catName.trim() === 'Tất cả') {
-            sql = "SELECT * FROM tbl_product WHERE 1 = 1 OR category = ? ";
+            sql = "SELECT a.*, b.phone_number as 'ownerPhone' FROM tbl_product a JOIN tbl_user b ON a.owner = b.user_name ORDER BY ID DESC;";
         } else {
-            sql = "SELECT * FROM tbl_product WHERE category = ? ";
+            sql = "SELECT a.*, b.phone_number as 'ownerPhone' FROM tbl_product a JOIN tbl_user b ON a.owner = b.user_name WHERE category = ? ORDER BY ID DESC";
         }
         db.query(sql, [req.body.catName], (err, response) => {
             if (err) throw err;
@@ -46,5 +46,13 @@ module.exports = {
             if (err) throw err;
             res.json(req.body.id);
         })
-    }
+    },
+    getProductByUser: (req, res) => {
+        let sql = "SELECT * FROM tbl_product WHERE owner = ?";
+        console.log('getProductByUser');
+        db.query(sql, [req.body.user], (err, response) => {
+            if (err) throw err;
+            res.json(response);
+        })
+    },
 }
