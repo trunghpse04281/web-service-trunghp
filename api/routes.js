@@ -17,4 +17,5 @@ module.exports = function (app) {
     app.route('/product/insert').post(productController.insertProduct);
     app.route('/product/updateImgProduct').post(productController.updateImageProduct);
     app.route('/product/getProductByUser').post(productController.getProductByUser);
+    app.route('/product/getProductByName').post(productController.getProductByName);
 };
